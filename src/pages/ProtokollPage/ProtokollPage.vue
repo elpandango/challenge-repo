@@ -3,20 +3,23 @@
     <ContentCard title="Protokoll" class="contentCad">
       <CardFilters
         :activeFilter="activeFilter"
-        @update:activeFilter="activeFilter = $event"
+        @update:activeFilter="protokollStore.setFilter"
       />
 
-      <ProtokollList :items="protokolListItems" />
+      <ProtokollList :items="protokollStore?.formattedItems" />
 
-      <Pagination />
+      <Pagination
+        :page="protokollStore.metaData.page"
+        :page_count="protokollStore.metaData.pageCount"
+        @update:page="protokollStore.setPage"
+      />
     </ContentCard>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useProtokollStore } from "@/stores/protokoll";
-import { onMounted } from "vue";
 import ContentCard from "@/components/ContentCard/ContentCard.vue";
 import CardFilters from "@/components/CardFilters/CardFilters.vue";
 import ProtokollList from "@/components/ProtokollList/ProtokollList.vue";
@@ -25,27 +28,10 @@ import Pagination from "@/components/Pagination/Pagination.vue";
 const activeFilter = ref("Alle");
 const protokollStore = useProtokollStore();
 
-const protokolListItems = [
-  {
-    title: "Messung erstellt (Gewicht) für Patient Anni Albers",
-    subtitle: "vor 10 Minuten von joy.monika",
-    icon: "check",
-  },
-  {
-    title: "Messung bearbeitet (Gewicht) für Patient Anni Albers",
-    subtitle: "vor 10 Minuten von joy.monika",
-    icon: "edit",
-  },
-  {
-    title: "Fehler beim Einloggen",
-    subtitle: "vor 10 Minuten von User joy.monika",
-    icon: "warning",
-  },
-];
-// ...
-
 onMounted(async () => {
   await protokollStore.request();
+
+  console.log("protokollStore.metaData: ", protokollStore.metaData);
 });
 </script>
 

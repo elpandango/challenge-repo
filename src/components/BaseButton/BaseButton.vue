@@ -11,6 +11,7 @@
         'rounded-none': isMiddle,
         'opacity-100': isActive,
         'opacity-50': !isActive,
+        '!cursor-not-allowed !opacity-50': disabled,
       },
     ]"
     :type="type"
@@ -47,6 +48,7 @@ const {
   isLast: Boolean,
   isMiddle: Boolean,
   isActive: Boolean,
+  disabled: Boolean,
 });
 
 const onClick = () => {

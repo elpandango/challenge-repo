@@ -1,12 +1,17 @@
 <template>
-  <div v-for="(item, index) in items" :key="index">
-    <ProtokollItem
-      :title="item.title"
-      :subtitle="item.subtitle"
-      :icon="item.icon"
-      :class="index === items.length - 1 ? 'last:border-none' : ''"
-    />
+  <div v-if="items.length === 0" class="text-center text-gray-500 py-4">
+    Keine Daten zum Anzeigen
   </div>
+  <template v-else>
+    <div v-for="(item, index) in items" :key="index">
+      <ProtokollItem
+        :meta="item.meta"
+        :message="item.message"
+        :icon="item.icon"
+        :class="index === items.length - 1 ? 'last:border-none' : ''"
+      />
+    </div>
+  </template>
 </template>
 
 <script setup>
