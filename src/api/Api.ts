@@ -13,7 +13,9 @@ class Api {
   };
 
   constructor() {
-    this.defaultHeader = {};
+    this.defaultHeader = {
+      Authorization: localStorage.getItem("auth_token") || undefined,
+    };
     this.getParams = {};
 
     // HardCoded für Challenge

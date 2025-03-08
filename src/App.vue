@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="isUserAuthorized"
-    class="flex flex-col min-h-screen bg-custom-gradient bg-custom-image"
-  >
+  <div v-if="isUserAuthorized" class="flex flex-col min-h-screen">
     <PageHeader />
     <main class="flex-1 flex">
       <RouterView />
@@ -21,12 +18,18 @@ import EmptyTokenWarning from "@/components/EmptyTokenWarning/EmptyTokenWarning.
 
 const userStore = useUserStore();
 
+userStore.loadTokenFromStorage();
+
 const isUserAuthorized = computed(() => userStore.isUserAuthorized);
 
 const getToken = (): string | null => {
-  // ..
-  return `Bearer {token}`; // change token here
-  // return null; // change token here
+  userStore.loadTokenFromStorage();
+
+  if (userStore.token) {
+    return `Bearer ${userStore.token}`;
+  }
+
+  return null;
 };
 
 onMounted(() => {

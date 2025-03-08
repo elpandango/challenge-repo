@@ -2,32 +2,32 @@
   <div class="flex justify-center py-4 mb-2">
     <BaseButton
       is-first
-      :is-active="activeFilter === 'Alle'"
-      @click="$emit('update:activeFilter', 'Alle')"
+      :is-active="protokollStore.currentFilter === undefined"
+      @click="protokollStore.setFilter('alle')"
     >
       Alle
     </BaseButton>
 
     <BaseButton
       is-middle
-      :is-active="activeFilter === 'Fehler'"
-      @click="$emit('update:activeFilter', 'Fehler')"
+      :is-active="protokollStore.currentFilter === 'error'"
+      @click="protokollStore.setFilter('error')"
     >
       Fehler
     </BaseButton>
 
     <BaseButton
       is-middle
-      :is-active="activeFilter === 'Warnung'"
-      @click="$emit('update:activeFilter', 'Warnung')"
+      :is-active="protokollStore.currentFilter === 'warning'"
+      @click="protokollStore.setFilter('warning')"
     >
       Warnung
     </BaseButton>
 
     <BaseButton
       is-last
-      :is-active="activeFilter === 'Log'"
-      @click="$emit('update:activeFilter', 'Log')"
+      :is-active="protokollStore.currentFilter === 'log'"
+      @click="protokollStore.setFilter('Log')"
     >
       Log
     </BaseButton>
@@ -35,10 +35,8 @@
 </template>
 
 <script setup lang="ts">
+import { useProtokollStore } from "@/stores/protokoll";
 import BaseButton from "@/components/BaseButton/BaseButton.vue";
 
-const { activeFilter } = defineProps({
-  activeFilter: String,
-});
-defineEmits(["update:activeFilter"]);
+const protokollStore = useProtokollStore();
 </script>

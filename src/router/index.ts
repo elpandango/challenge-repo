@@ -13,6 +13,26 @@ const router = createRouter({
       name: "protokoll",
       component: () => import("../pages/ProtokollPage/ProtokollPage.vue"),
     },
+    {
+      path: "/text-page",
+      name: "text-page",
+      component: () => import("../pages/TextPage/TextPage.vue"),
+    },
+    {
+      path: "/patienten",
+      name: "patienten",
+      component: () => import("../pages/TextPage/TextPage.vue"),
+    },
+    {
+      path: "/kurven",
+      name: "kurven",
+      component: () => import("../pages/TextPage/TextPage.vue"),
+    },
+    {
+      path: "/einstellungen",
+      name: "einstellungen",
+      component: () => import("../pages/TextPage/TextPage.vue"),
+    },
   ],
 });
 
