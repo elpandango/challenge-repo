@@ -10,7 +10,7 @@
 
     <nav
       :class="{ hidden: !isMenuOpen, flex: isMenuOpen }"
-      class="absolute z-10 top-[50px] left-0 w-full bg-accent py-4 flex-col items-center shadow-md transition-all duration-300 lg:static lg:flex lg:flex-row lg:py-0 lg:space-x-6 lg:shadow-none"
+      class="absolute z-10 top-[50px] left-0 w-full h-full bg-accent py-4 flex-col items-center shadow-md transition-all duration-300 lg:static lg:flex lg:flex-row lg:py-0 lg:space-x-6 lg:shadow-none"
     >
       <RouterLink to="/" :class="getLinkClass('/')">Start</RouterLink>
       <RouterLink to="/patienten" :class="getLinkClass('/patienten')">

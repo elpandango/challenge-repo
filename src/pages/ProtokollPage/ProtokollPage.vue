@@ -1,6 +1,6 @@
 <template>
   <div class="container flex w-full max-w-[1366px] px-4 items-start mx-auto">
-    <ContentCard title="Protokoll" class="contentCad">
+    <ContentCard title="Protokoll" class="contentCard">
       <CardFilters
         :activeFilter="activeFilter"
         @update:activeFilter="protokollStore.setFilter"

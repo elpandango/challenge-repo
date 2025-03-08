@@ -10,16 +10,16 @@
 
     <BaseButton
       is-middle
-      :is-active="protokollStore.currentFilter === 'fehler'"
-      @click="protokollStore.setFilter('Fehler')"
+      :is-active="protokollStore.currentFilter === 'error'"
+      @click="protokollStore.setFilter('error')"
     >
       Fehler
     </BaseButton>
 
     <BaseButton
       is-middle
-      :is-active="protokollStore.currentFilter === 'warnung'"
-      @click="protokollStore.setFilter('Warnung')"
+      :is-active="protokollStore.currentFilter === 'warning'"
+      @click="protokollStore.setFilter('warning')"
     >
       Warnung
     </BaseButton>

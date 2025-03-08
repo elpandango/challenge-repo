@@ -11,6 +11,7 @@ export const useProtokollStore = defineStore("protokoll", {
       page: 1,
       limit: 10,
       activeFilter: "alle",
+      searchQuery: "",
     }) as { lastResponse: ProtokollResponse | null },
   getters: {
     items: (state) => state.lastResponse?.items ?? [],
@@ -68,6 +69,7 @@ export const useProtokollStore = defineStore("protokoll", {
             max: limit,
             filter:
               this.activeFilter !== "alle" ? this.activeFilter : undefined,
+            needle: this.searchQuery ? this.searchQuery : undefined,
           },
         });
 
@@ -81,13 +83,14 @@ export const useProtokollStore = defineStore("protokoll", {
       this.page = newPage;
       await this.request(newPage);
     },
-    async setLimit(newLimit: number) {
-      this.limit = newLimit;
-      this.page = 1;
-      await this.request();
-    },
     async setFilter(newFilter: string) {
       this.activeFilter = newFilter.toLowerCase();
+      this.page = 1;
+      this.searchQuery = "";
+      await this.request();
+    },
+    async setSearchQuery(query: string) {
+      this.searchQuery = query;
       this.page = 1;
       await this.request();
     },
