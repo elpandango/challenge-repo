@@ -33,11 +33,4 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
-.page {
-  width: 100%;
-  padding: 10px;
-  background: springgreen;
-  /* --- */
-}
-</style>
+<style></style>

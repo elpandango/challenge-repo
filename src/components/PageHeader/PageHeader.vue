@@ -2,7 +2,9 @@
   <header
     class="h-[50px] bg-accent text-white px-6 flex items-center justify-between shadow-md mb-[60px]"
   >
-    <div class="text-4xl pt-1 font-bebas-neue mr-[60px]">GO.VITAL</div>
+    <RouterLink to="/" class="text-4xl pt-1 font-bebas-neue mr-[60px]"
+      >GO.VITAL</RouterLink
+    >
 
     <button class="lg:hidden text-white text-2xl" @click="toggleMenu">
       ☰
