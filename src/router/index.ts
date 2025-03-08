@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "start",
-      redirect: "/protokoll",
+      component: () => import("../pages/TextPage/TextPage.vue"),
     },
     {
       path: "/protokoll",
