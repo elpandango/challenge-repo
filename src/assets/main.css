@@ -2,15 +2,38 @@
 @import './fonts/roboto/stylesheet.css';
 @import './fonts/bebas-neue/stylesheet.css';
 
-:root {
-  --accent-color: #FF6F61;
+@theme {
+    --color-accent: #FF6F61;
+    --font-bebas-neue: "Bebas Neue", sans-serif;
+    --font-roboto: "Roboto", sans-serif;
+    --color-primary-text: #000000;
+    --color-secondary-text: #888888;
+}
 
-  --primary-text-color: #000000;
-  --secondary-text-color: #888888;
-  /* ... */
+:root {
+    /*--accent-color: #FF6F61;*/
+    --primary-text-color: #000000;
+    --secondary-text-color: #888888;
+    --font-bebas-neue: "Bebas Neue", sans-serif;
+    --font-roboto: "Roboto", sans-serif;
 }
 
 body {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-roboto), sans-serif;
+    color: var(--primary-text-color);
+
+    background: url('/images/bg_image.png'),
+    linear-gradient(56deg, rgba(233, 233, 233, 0.5046393557422969) 0%, rgba(202, 213, 202, 1) 100%);
+    background-size: 500px, cover;
+    background-position: calc(100% - 20px) calc(100% - 60px), center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+@media only screen and (max-width: 640px) {
+    body {
+        background-size: 300px, cover;
+    }
 }

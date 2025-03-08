@@ -1,9 +1,14 @@
 <template>
-  <template v-if="isUserAuthorized">
+  <div
+    v-if="isUserAuthorized"
+    class="flex flex-col min-h-screen bg-custom-gradient bg-custom-image"
+  >
     <PageHeader />
-    <RouterView />
+    <main class="flex-1 flex">
+      <RouterView />
+    </main>
     <PageFooter />
-  </template>
+  </div>
   <EmptyTokenWarning v-else />
 </template>
 
