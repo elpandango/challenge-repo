@@ -41,9 +41,8 @@ const toggleMenu = () => {
 };
 
 const getLinkClass = (path: string) => ({
-  "border-white font-semibold text-white": route.path === path,
-  "relative flex h-full items-center px-4 m-0 border-b-4 border-transparent hover:border-white text-lg font-light":
-    true,
+  "font-semibold text-white": route.path === path, // Только текстовые стили
+  "relative flex h-full items-center px-4 m-0 text-lg font-light": true,
 });
 </script>
 
@@ -57,5 +56,29 @@ const getLinkClass = (path: string) => ({
   transform: translateY(0);
   display: flex;
   flex-direction: column;
+}
+nav a {
+  position: relative;
+  padding-bottom: 4px;
+  text-decoration: none;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: white;
+  border-radius: 999px;
+  transition:
+    width 0.3s ease,
+    left 0.3s ease;
+}
+
+nav a.router-link-active::after {
+  width: 100%;
+  left: 0;
 }
 </style>

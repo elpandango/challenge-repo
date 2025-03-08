@@ -18,9 +18,11 @@
 
       <button class="ml-2" @click="toggleSearch">
         <BaseIcon
-          :name="isSearching ? 'xmark-solid' : 'magnifying-glass-solid'"
+          :key="isSearching"
+          :name="isSearching ? 'circle-xmark-solid' : 'magnifying-glass-solid'"
           size="18"
           color="white"
+          class="cursor-pointer"
         />
       </button>
     </header>

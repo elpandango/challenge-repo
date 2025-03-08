@@ -30,8 +30,6 @@ const protokollStore = useProtokollStore();
 
 onMounted(async () => {
   await protokollStore.request();
-
-  console.log("protokollStore.metaData: ", protokollStore.metaData);
 });
 </script>
 
