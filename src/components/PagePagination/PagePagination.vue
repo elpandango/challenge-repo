@@ -17,7 +17,7 @@
           class="flex justify-center items-center"
         >
           <BaseButton
-            class="w-[45px] !min-w-[45px]"
+            class="w-[35px] !min-w-[35px] !px-3"
             :is-active="page === 1"
             is-middle
             :aria-label="'Go to page 1'"
@@ -41,7 +41,7 @@
         >
           <BaseButton
             is-middle
-            class="w-[45px] !min-w-[45px]"
+            class="w-[35px] !min-w-[35px] !px-3"
             :aria-label="`Go to page ${page}`"
             :is-active="page === props.page"
             @click="emitPageChange(page)"
@@ -51,24 +51,24 @@
         </li>
 
         <li
-          v-if="pagesToShow[pagesToShow.length - 1] < props.page_count - 1"
+          v-if="pagesToShow[pagesToShow.length - 1] < props.pageCount - 1"
           class="inline-flex items-center text-gray-400"
         >
           <BaseButton is-middle> ... </BaseButton>
         </li>
 
         <li
-          v-if="pagesToShow[pagesToShow.length - 1] !== props.page_count"
+          v-if="pagesToShow[pagesToShow.length - 1] !== props.pageCount"
           class="flex justify-center items-center"
         >
           <BaseButton
             is-middle
-            class="w-[45px] !min-w-[45px]"
-            :aria-label="`Go to page ${props.page_count}`"
-            :is-active="props.page_count === props.page"
-            @click="emitPageChange(props.page_count)"
+            class="w-[35px] !min-w-[35px] !px-3"
+            :aria-label="`Go to page ${props.pageCount}`"
+            :is-active="props.pageCount === props.page"
+            @click="emitPageChange(props.pageCount)"
           >
-            {{ props.page_count }}
+            {{ props.pageCount }}
           </BaseButton>
         </li>
 
@@ -76,7 +76,7 @@
           <BaseButton
             is-last
             class="w-15"
-            :disabled="props.page >= props.page_count"
+            :disabled="props.page >= props.pageCount"
             @click="emitPageChange(props.page + 1)"
           >
             Next
@@ -98,26 +98,26 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  page_count: {
+  pageCount: {
     type: Number,
     required: true,
   },
 });
 
 const emitPageChange = (page: number) => {
-  if (page >= 1 && page <= props.page_count) {
+  if (page >= 1 && page <= props.pageCount) {
     emits("update:page", page);
   }
 };
 
 const pagesToShow = computed(() => {
-  const { page, page_count } = props;
+  const { page, pageCount } = props;
   const isMobile = window.innerWidth <= 768;
   const maxVisible = isMobile ? 1 : 3;
   const pages = [];
 
   let start = Math.max(1, page - Math.floor(maxVisible / 2));
-  let end = Math.min(page_count, start + maxVisible - 1);
+  let end = Math.min(pageCount, start + maxVisible - 1);
   start = Math.max(1, end - maxVisible + 1);
 
   for (let i = start; i <= end; i++) {

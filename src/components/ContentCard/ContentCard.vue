@@ -10,11 +10,16 @@
         ref="searchInput"
         v-model="protokollStore.searchQuery"
         type="text"
-        class="w-full px-3 py-1 text-white rounded-md border border-transparent focus:border-white focus:ring-1 focus:ring-white focus:outline-none bg-transparent"
+        class="w-full px-3 py-1 text-white rounded-md border border-white ring-1 ring-white focus:outline-none bg-transparent"
         placeholder="Suchen..."
         @blur="handleBlur"
+        @input="showSearchButton = !!protokollStore.searchQuery"
         @keyup.enter="submitSearch"
       />
+
+      <button v-if="showSearchButton" class="ml-2" @click="submitSearch">
+        <BaseIcon name="magnifying-glass-solid" size="16" color="white" />
+      </button>
 
       <button class="ml-2" @click="toggleSearch">
         <BaseIcon
@@ -42,9 +47,10 @@ defineProps<{
   title: string;
 }>();
 
+const protokollStore = useProtokollStore();
 const isSearching = ref(false);
 const searchInput = ref<HTMLInputElement | null>(null);
-const protokollStore = useProtokollStore();
+const showSearchButton = ref(false);
 
 const toggleSearch = async () => {
   isSearching.value = !isSearching.value;
@@ -54,12 +60,14 @@ const toggleSearch = async () => {
   } else {
     protokollStore.setSearchQuery("");
     isSearching.value = false;
+    showSearchButton.value = false;
   }
 };
 
 const handleBlur = () => {
   if (!protokollStore.searchQuery) {
     isSearching.value = false;
+    showSearchButton.value = false;
   }
 };
 
@@ -72,6 +80,7 @@ watch(
   () => {
     protokollStore.setSearchQuery("");
     isSearching.value = false;
+    showSearchButton.value = false;
   },
 );
 </script>
