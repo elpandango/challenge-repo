@@ -12,6 +12,7 @@ export const useProtokollStore = defineStore("protokoll", {
       limit: 10,
       activeFilter: "alle",
       searchQuery: "",
+      isLoading: false,
     }) as { lastResponse: ProtokollResponse | null },
   getters: {
     items: (state) => state.lastResponse?.items ?? [],
@@ -59,6 +60,8 @@ export const useProtokollStore = defineStore("protokoll", {
         return;
       }
 
+      this.isLoading = true;
+
       try {
         // const response = await getMockData();
         const response = await api.request({
@@ -76,6 +79,8 @@ export const useProtokollStore = defineStore("protokoll", {
         this.lastResponse = await response.json();
       } catch (error) {
         console.log("Fetching data failed.", error);
+      } finally {
+        this.isLoading = false;
       }
     },
     async setPage(newPage: number) {

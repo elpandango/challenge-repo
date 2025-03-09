@@ -25,12 +25,13 @@ export const useUserStore = defineStore("user", {
         const token = await response.text();
         if (token) {
           this.setToken(token);
+          location.reload();
         }
       } catch (error) {
         console.error("Token fetch failed:", error);
       }
     },
-    async setToken(token: string | null) {
+    setToken(token: string | null) {
       if (token) {
         const cleanedToken = token.replace(/^(Bearer\s)+/, "Bearer ");
         localStorage.setItem(TOKEN_STORAGE_KEY, cleanedToken);
@@ -48,7 +49,7 @@ export const useUserStore = defineStore("user", {
     async loadTokenFromStorage() {
       const savedToken = localStorage.getItem(TOKEN_STORAGE_KEY);
       if (savedToken) {
-        await this.setToken(savedToken);
+        this.setToken(savedToken);
       } else {
         await this.fetchToken();
       }
