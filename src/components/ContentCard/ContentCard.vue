@@ -18,7 +18,12 @@
       />
 
       <button v-if="showSearchButton" class="ml-2" @click="submitSearch">
-        <BaseIcon name="magnifying-glass-solid" size="16" color="white" />
+        <BaseIcon
+          name="magnifying-glass-solid"
+          size="16"
+          color="white"
+          class="cursor-pointer"
+        />
       </button>
 
       <button class="ml-2" @click="toggleSearch">
