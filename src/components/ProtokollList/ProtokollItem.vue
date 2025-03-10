@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import BaseIcon from "@/components/BaseIcon/BaseIcon.vue";
 
 defineProps({

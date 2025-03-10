@@ -41,7 +41,7 @@ const {
     default: "",
   },
   type: {
-    type: String,
+    type: String as () => "button" | "submit" | "reset",
     default: "button",
   },
   isFirst: Boolean,

@@ -5,15 +5,14 @@ import type { ProtokollResponse } from "@/models/ProtokollResponse";
 import { useUserStore } from "@/stores/user";
 
 export const useProtokollStore = defineStore("protokoll", {
-  state: () =>
-    ({
-      lastResponse: null,
-      page: 1,
-      limit: 10,
-      activeFilter: "alle",
-      searchQuery: "",
-      isLoading: false,
-    }) as { lastResponse: ProtokollResponse | null },
+  state: () => ({
+    lastResponse: null as ProtokollResponse | null,
+    page: 1,
+    limit: 10,
+    activeFilter: "alle",
+    searchQuery: "",
+    isLoading: false,
+  }),
   getters: {
     items: (state) => state.lastResponse?.items ?? [],
     formattedItems: (state) =>

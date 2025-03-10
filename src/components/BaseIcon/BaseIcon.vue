@@ -2,7 +2,7 @@
   <component :is="IconComponent" v-bind="iconStyle" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { defineAsyncComponent, computed } from "vue";
 
 const props = defineProps({

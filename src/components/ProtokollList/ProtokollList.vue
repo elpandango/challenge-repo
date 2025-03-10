@@ -14,10 +14,10 @@
   </template>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import ProtokollItem from "./ProtokollItem.vue";
 
-defineProps({
-  items: Array,
-});
+defineProps<{
+  items: Array<{ meta: string; message: string; icon: string }>;
+}>();
 </script>
